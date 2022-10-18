@@ -1,22 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React,{useState} from 'react';
 
-export default function App() {
-    return ( <
-        View style = { styles.container } >
-        <
-        Text > Hello World! < /Text>    <
-        StatusBar style = "auto" / >
-        <
-        /View>
+import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+
+import WelcomeScreen from './app/screens/WelcomeScreen';
+import FormScreen from './app/screens/FormScreen';
+import ViewScreen from './app/screens/ViewScreen';
+import * as Yup from 'yup'
+
+
+const Stack = createStackNavigator();
+
+const StackNavigator = ()=>(
+  <Stack.Navigator>
+      <Stack.Screen name="First Page" component={WelcomeScreen}/>
+      <Stack.Screen name="Second Page" component={FormScreen}/>
+      <Stack.Screen name="Third Page" component={ViewScreen}/>
+  </Stack.Navigator>
+);
+
+export default function App() 
+{   
+
+    return (
+      <NavigationContainer>
+        <StackNavigator/>
+      </NavigationContainer>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
